@@ -1,4 +1,3 @@
-import { createApp } from "vue";
-import App from "./App.vue";
+import BarcodeInput from "./BarcodeInput.vue";
 
-createApp(App).mount("#app");
+export default BarcodeInput;
