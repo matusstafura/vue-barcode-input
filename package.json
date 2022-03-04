@@ -1,6 +1,6 @@
 {
   "name": "vue-barcode-input",
-  "description": "desf",
+  "description": "in development - Trivial Form for Barcode Scanner for further dev",
   "repository": {
     "type": "git",
     "url": "https://github.com/matusstafura/vue-barcode-input"
@@ -15,7 +15,7 @@
   "author": "Matus Stafura",
   "license": "MIT",
   "private": false,
-  "version": "0.0.2",
+  "version": "0.0.3",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

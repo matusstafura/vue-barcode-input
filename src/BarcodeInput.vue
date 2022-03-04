@@ -56,8 +56,8 @@ export default {
       qty: 1,
       sku: "",
       products: [
-        // { index: 1, qty: 1, sku: "217888566461", skladom: "-1", incoming: "2" },
-        // { index: 2, qty: 1, sku: "217334098018", skladom: "0", incoming: 0 },
+        // { index: 1, qty: 1, sku: "217888566461" },
+        // { index: 2, qty: 1, sku: "217334098018" },
       ],
       skladom: 0,
       incoming: 0,
@@ -69,8 +69,6 @@ export default {
             index: this.increment(),
             qty: this.qty,
             sku: this.sku,
-            skladom: this.skladom,
-            incoming: this.incoming,
           });
           this.sku = "";
     },
