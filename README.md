@@ -5,5 +5,9 @@
 ## Usage
 
 ```js
-<BarcodeInput></BarcodeInput>
+<BarcodeInput dump="true"></BarcodeInput>
 ```
+
+| Prop | Type    | Default | Description             |
+| ---- | ------- | ------- | ----------------------- |
+| dump | Boolean | false   | Dumps log of input data |

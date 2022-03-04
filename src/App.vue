@@ -1,6 +1,6 @@
 <template>
     <div>
-        <BarcodeInput></BarcodeInput>
+        <BarcodeInput :dump="true"></BarcodeInput>
     </div>
 </template>
 

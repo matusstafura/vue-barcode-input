@@ -1,5 +1,6 @@
 <template>
   <div class="max-w-screen-md m-auto">
+    
     <input type="text" v-model="qty" class="w-16 border border-black" />
     <input
       type="text"
@@ -31,18 +32,19 @@
         </td>
       </tr>
     </table>
-
-    {{ increment() }}
-
-    <p v-for="product in products" :key="product.sku">
-      {{ product.index }}
-    </p>
-
-    {{ products }}
-
+      
     <button @click="temp" class="block px-4 py-2 m-auto text-white bg-blue-400">
       Upload data to server
     </button>
+    
+    <div v-show="dump && products.length > 0">
+      {{ increment() }}
+      <p v-for="product in products" :key="product.sku">
+        {{ product.index }}
+      </p>
+      {{ products }}
+    </div>
+    
   </div>
 </template>
 
@@ -50,6 +52,12 @@
 
 export default {
   name: 'BarcodeInput',
+  props: {
+    dump: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       index: 0,
@@ -65,18 +73,15 @@ export default {
   },
   methods: {
     getDetails(sku) {
-          this.products.push({
-            index: this.increment(),
-            qty: this.qty,
-            sku: this.sku,
-          });
-          this.sku = "";
+      this.products.push({
+        index: this.increment(),
+        qty: this.qty,
+        sku: this.sku,
+      });
+      this.sku = "";
     },
     temp() {
       alert(this.products[0]["sku"]);
-    },
-    addItem() {
-      this.getDetails(this.sku);
     },
     increaseQty(index) {
       const x = this.products.findIndex((e) => e["index"] == index);
@@ -91,6 +96,9 @@ export default {
         return this.products.slice(-1)[0].index + 1;
       }
       return 1;
+    },
+    addItem() {
+      this.getDetails(this.sku);
     },
     removeItem(index) {
       const x = this.products.findIndex((e) => e["index"] == index);
