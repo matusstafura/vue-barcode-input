@@ -1,24 +1,13 @@
 {
   "name": "vue-barcode-input",
-  "description": "in development - Trivial Form for Barcode Scanner for further dev",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/matusstafura/vue-barcode-input"
-  },
-  "keywords": [
-    "barcode",
-    "scanner",
-    "input",
-    "vuejs",
-    "vue"
-  ],
-  "author": "Matus Stafura",
-  "license": "MIT",
-  "private": false,
   "version": "0.0.3",
+  "private": false,
+  "description": "in development - Trivial Form for Barcode Scanner for further dev",
+  "author": "Matus Stafura",
   "scripts": {
-    "dev": "vite",
     "build": "vite build",
+    "test:unit": "vue-cli-service test:unit",
+    "dev": "vite",
     "preview": "vite preview"
   },
   "main": "./src/main.js",
@@ -27,6 +16,23 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.2.0",
+    "@vue/cli-plugin-unit-jest": "~5.0.0",
+    "@vue/test-utils": "^2.0.0-0",
+    "@vue/vue3-jest": "^27.0.0-alpha.1",
+    "babel-jest": "^27.0.6",
+    "jest": "^27.0.5",
     "vite": "^2.8.0"
+  },
+  "keywords": [
+    "barcode",
+    "scanner",
+    "input",
+    "vuejs",
+    "vue"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matusstafura/vue-barcode-input"
   }
 }
