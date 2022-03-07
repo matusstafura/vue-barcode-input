@@ -11,3 +11,9 @@
 | Prop | Type    | Default | Description             |
 | ---- | ------- | ------- | ----------------------- |
 | dump | Boolean | false   | Dumps log of input data |
+
+## Testing
+
+```
+npm run test:unit
+```

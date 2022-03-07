@@ -6,12 +6,12 @@
     <div class="items-center -mx-2 flex">
       <div class="w- mx-2">
           <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200 text-center">Qty</label>
-          <input v-model="qty" class="block w-full px-4 py-2 text-gray-700 bg-white border text-left rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" type="text">
+          <input id="qty" name="qty" v-model="qty" class="block w-full px-4 py-2 text-gray-700 bg-white border text-left rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" type="text">
       </div>
 
       <div class="w-full mx-2 md:mt-0">
           <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">SKU</label>
-          <input type="text" v-model="sku" @change="addItem" ref="sku" class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" >
+          <input id="sku" name="sku" type="text" v-model="sku" @change="addItem" ref="sku" class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" >
       </div>
     </div>
       
@@ -76,12 +76,7 @@ export default {
       index: 0,
       qty: 1,
       sku: "",
-      products: [
-        // { index: 1, qty: 1, sku: "217888566461" },
-        // { index: 2, qty: 1, sku: "217334098018" },
-      ],
-      skladom: 0,
-      incoming: 0,
+      products: [],
     };
   },
   methods: {
