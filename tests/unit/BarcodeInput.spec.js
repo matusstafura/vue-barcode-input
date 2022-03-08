@@ -15,4 +15,11 @@ describe("BarcodeInput", () => {
     wrapper.vm.getDetails("77256270");
     expect(wrapper.vm.products.length).toBe(2);
   });
+
+  it("allows only unique skus", () => {
+    const wrapper = mount(BarcodeInput);
+    wrapper.vm.getDetails("1234");
+    wrapper.vm.getDetails("1234");
+    expect(wrapper.vm.products.length).toBe(1);
+  });
 });

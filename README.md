@@ -2,6 +2,12 @@
 
 ## in development !
 
+## Features
+- add only unique SKUs
+- can remove SKU
+- edit qty manually
+- dump log
+
 ## Usage
 
 ```js
