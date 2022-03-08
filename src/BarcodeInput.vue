@@ -3,7 +3,9 @@
     
     <div class="py-4 mx-auto">
     
-    <div class="items-center -mx-2 flex">
+    <ElementInput :qty="qty" :sku="sku" @add-item="getDetails"></ElementInput>
+    
+    <!-- <div class="items-center -mx-2 flex">
       <div class="w- mx-2">
           <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200 text-center">Qty</label>
           <input id="qty" name="qty" v-model="qty" class="block w-full px-4 py-2 text-gray-700 bg-white border text-left rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" type="text">
@@ -13,7 +15,7 @@
           <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">SKU</label>
           <input id="sku" name="sku" type="text" v-model="sku" @change="addItem" ref="sku" class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" >
       </div>
-    </div>
+    </div> -->
       
     </div> 
 
@@ -62,62 +64,59 @@
 </template>
 
 <script>
+import ElementInput from "./ElementInput.vue";
 
 export default {
-  name: 'BarcodeInput',
-  props: {
-    dump: {
-      type: Boolean,
-      default: false
-    }
-  },
-  data() {
-    return {
-      index: 0,
-      qty: 1,
-      sku: "",
-      products: [],
-    };
-  },
-  methods: {
-    getDetails(sku) {
-      this.products.push({
-        index: this.increment(),
-        qty: this.qty,
-        sku: this.sku,
-      });
-      this.sku = "";
+    name: "BarcodeInput",
+    props: {
+        dump: {
+            type: Boolean,
+            default: false
+        }
     },
-    temp() {
-      alert(this.products.length);
+    data() {
+        return {
+            index: 0,
+            qty: 1,
+            sku: "",
+            products: [],
+        };
     },
-    increaseQty(index) {
-      const x = this.products.findIndex((e) => e["index"] == index);
-      this.products[x]["qty"] += 1;
+    methods: {
+        addItem(event) {
+          console.log(event)
+          this.getDetails(event);
+        },
+        getDetails(sku) {
+            this.products.push({
+                index: this.increment(),
+                qty: this.qty,
+                sku: sku,
+            });
+            this.sku = "";
+        },
+        temp() {
+            alert(this.products.length);
+        },
+        increaseQty(index) {
+            const x = this.products.findIndex((e) => e["index"] == index);
+            this.products[x]["qty"] += 1;
+        },
+        decreaseQty(index) {
+            const x = this.products.findIndex((e) => e["index"] == index);
+            this.products[x]["qty"] -= 1;
+        },
+        increment() {
+            if (this.products.length != 0) {
+                return this.products.slice(-1)[0].index + 1;
+            }
+            return 1;
+        },
+        removeItem(index) {
+            const x = this.products.findIndex((e) => e["index"] == index);
+            this.products.splice(x, 1);
+        },
     },
-    decreaseQty(index) {
-      const x = this.products.findIndex((e) => e["index"] == index);
-      this.products[x]["qty"] -= 1;
-    },
-    increment() {
-      if (this.products.length != 0) {
-        return this.products.slice(-1)[0].index + 1;
-      }
-      return 1;
-    },
-    addItem() {
-      this.getDetails(this.sku);
-    },
-    removeItem(index) {
-      const x = this.products.findIndex((e) => e["index"] == index);
-      this.products.splice(x, 1);
-    },
-    focusInput() {
-      this.$refs.sku.focus();
-    },
-  },
-  mounted() {
-    this.focusInput();
-  },
+    components: { ElementInput }
 };
 </script>

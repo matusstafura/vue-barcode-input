@@ -12,7 +12,7 @@
 | ---- | ------- | ------- | ----------------------- |
 | dump | Boolean | false   | Dumps log of input data |
 
-## Testing
+## Testing (Jest)
 
 ```
 npm run test:unit
