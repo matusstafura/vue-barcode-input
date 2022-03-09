@@ -1,8 +1,6 @@
 <template>
   <div class="w-1/2 m-auto">
-    <div class="py-4 mx-auto">
-      <ElementInput :qty="qty" :sku="sku" @add-item="getDetails"></ElementInput>
-    </div>
+    <ElementInput :qty="qty" :sku="sku" @add-item="getDetails"></ElementInput>
 
     <table class="w-full my-8">
       <thead>
@@ -76,11 +74,7 @@
       </tr>
     </table>
 
-    <button @click="temp" class="block px-4 py-2 m-auto text-white bg-blue-400">
-      Upload data to server
-    </button>
-
-    <div v-show="dump && products.length > 0">
+    <div v-show="dump">
       <div class="bg-gray-100 p-4 mt-8">
         <span class="font-bold">Dump:</span>
         <p>next index: {{ increment() }}</p>
@@ -122,6 +116,7 @@ export default {
         });
       }
       this.sku = "";
+      this.$emit('products', this.products)
     },
     temp() {
       alert(this.products.length);

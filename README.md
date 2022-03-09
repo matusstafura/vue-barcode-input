@@ -10,8 +10,14 @@
 
 ## Usage
 
+Dumps data
 ```js
 <BarcodeInput dump="true"></BarcodeInput>
+```
+
+Emits event
+```js
+<BarcodeInput @products="showData"></BarcodeInput>
 ```
 
 | Prop | Type    | Default | Description             |
