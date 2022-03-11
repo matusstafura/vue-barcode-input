@@ -1,21 +1,34 @@
 # Barcode Scanner Input
 
+Reads scanned barcodes for further use (api, db, file, ...)
+
 ## in development !
 
+## Demo
+
+To view demo online: // to be added
+
 ## Features
-- add only unique SKUs
+
+- adds only unique SKUs
 - can remove SKU
 - edit qty manually
-- dump log
+- dumps log
+
+## Install
+
+npm i vue-barcode-input
 
 ## Usage
 
 Dumps data
+
 ```js
 <BarcodeInput dump="true"></BarcodeInput>
 ```
 
 Emits event
+
 ```js
 <BarcodeInput @products="showData"></BarcodeInput>
 ```

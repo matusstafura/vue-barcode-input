@@ -1,29 +1,27 @@
 <template>
-    <div>
-        <BarcodeInput :dump="true" @products="showData"></BarcodeInput>
-    </div>
+  <div>
+    <BarcodeInput :dump="true" @products="showData"></BarcodeInput>
+  </div>
 </template>
 
 <script>
 import BarcodeInput from "./BarcodeInput.vue";
 export default {
-    data() {
-        return {
-            products: ''
-        }
+  data() {
+    return {
+      products: "",
+    };
+  },
+  methods: {
+    showData(products) {
+      console.log(products);
     },
-    methods: {
-        showData(products) {
-            console.log(products)
-        },
-        temp() {
-            console.log(this.products)
-        }
+    temp() {
+      console.log(this.products);
     },
-    components: { BarcodeInput }
-}
+  },
+  components: { BarcodeInput },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

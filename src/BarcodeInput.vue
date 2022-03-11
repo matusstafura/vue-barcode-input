@@ -1,5 +1,6 @@
 <template>
   <div class="w-1/2 m-auto">
+
     <ElementInput :qty="qty" :sku="sku" @add-item="getDetails"></ElementInput>
 
     <table class="w-full my-8">
@@ -18,50 +19,18 @@
             <button
               data-action="decrement"
               @click="decreaseQty(product.index)"
-              class="
-                bg-gray-300
-                text-gray-600
-                hover:text-gray-700 hover:bg-gray-400
-                h-full
-                w-8
-                rounded-l
-                cursor-pointer
-                outline-none
-              "
+              class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-8 rounded-l cursor-pointer outline-none"
             >
               <span class="m-auto text-2xl font-thin">−</span>
             </button>
             <input
               v-model="product.qty"
-              class="
-                outline-none
-                focus:outline-none
-                text-center
-                w-8
-                bg-gray-300
-                font-semibold
-                text-md
-                hover:text-black
-                focus:text-black
-                md:text-basecursor-default
-                flex
-                items-center
-                text-gray-700
-                outline-none
-              "
+              class="outline-none focus:outline-none text-center w-8 bg-gray-300 font-semibold text-md hover:text-black focus:text-black md:text-basecursor-default flex items-center text-gray-700 outline-none"
             />
             <button
               data-action="increment"
               @click="increaseQty(product.index)"
-              class="
-                bg-gray-300
-                text-gray-600
-                hover:text-gray-700 hover:bg-gray-400
-                h-full
-                w-8
-                rounded-r
-                cursor-pointer
-              "
+              class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-8 rounded-r cursor-pointer"
             >
               <span class="m-auto text-2xl font-thin">+</span>
             </button>
@@ -74,18 +43,13 @@
       </tr>
     </table>
 
-    <div v-show="dump">
-      <div class="bg-gray-100 p-4 mt-8">
-        <span class="font-bold">Dump:</span>
-        <p>next index: {{ increment() }}</p>
-        <p>{{ products }}</p>
-      </div>
-    </div>
+    <Logger :products="products" :increment="incrementIndex" v-show="dump" ></Logger>
   </div>
 </template>
 
 <script>
 import ElementInput from "./ElementInput.vue";
+import Logger from "./Logger.vue";
 
 export default {
   name: "BarcodeInput",
@@ -103,10 +67,16 @@ export default {
       products: [],
     };
   },
+  computed: {
+    incrementIndex() {
+      return this.increment();
+    },
+  },
   methods: {
     getDetails(sku) {
       const match = this.products.filter((e) => e["sku"] == sku);
       if (match.length != 0) {
+        // Add Notification
         console.log("exists");
       } else {
         this.products.push({
@@ -116,10 +86,7 @@ export default {
         });
       }
       this.sku = "";
-      this.$emit('products', this.products)
-    },
-    temp() {
-      alert(this.products.length);
+      this.$emit("products", this.products);
     },
     increaseQty(index) {
       const x = this.products.findIndex((e) => e["index"] == index);
@@ -140,6 +107,6 @@ export default {
       this.products.splice(x, 1);
     },
   },
-  components: { ElementInput },
+  components: { ElementInput, Logger },
 };
 </script>
