@@ -1,7 +1,7 @@
 <template>
   <div class="w-1/2 m-auto">
 
-    <ElementInput :qty="qty" :sku="sku" @add-item="getDetails"></ElementInput>
+    <ElementInput @add-item="getDetails"></ElementInput>
 
     <table class="w-full my-8">
       <thead>
@@ -62,8 +62,6 @@ export default {
   data() {
     return {
       index: 0,
-      qty: 1,
-      sku: "",
       products: [],
     };
   },
@@ -73,15 +71,16 @@ export default {
     },
   },
   methods: {
-    getDetails(sku) {
+    getDetails(qty, sku) {
       const match = this.products.filter((e) => e["sku"] == sku);
       if (match.length != 0) {
         // Add Notification
         console.log("exists");
       } else {
+        this.qty = qty
         this.products.push({
           index: this.increment(),
-          qty: this.qty,
+          qty: parseInt(qty),
           sku: sku,
         });
       }

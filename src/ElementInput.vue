@@ -21,11 +21,10 @@
         >
         <input
           id="sku"
-          name="sku"
           type="text"
-          v-model="sku"
           @change="emitSku"
-          ref="sku"
+          v-model="sku"
+          ref="skuInput"
           class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
         />
       </div>
@@ -35,23 +34,21 @@
 
 <script>
 export default {
-  props: {
-    qty: {
-      type: Number,
-      default: 1,
-    },
-    sku: {
-      type: String,
-      default: "",
-    },
+  name: 'ElementInput',
+  data() {
+    return {
+      sku: "",
+      qty: 1
+    }
   },
   methods: {
     emitSku(event) {
-      this.$emit("addItem", event.target.value);
+      this.$emit("addItem", this.qty, event.target.value);
+      this.qty = 1;
       event.target.value = "";
     },
     focusInput() {
-      this.$refs.sku.focus();
+      this.$refs.skuInput.focus();
     },
   },
   mounted() {
